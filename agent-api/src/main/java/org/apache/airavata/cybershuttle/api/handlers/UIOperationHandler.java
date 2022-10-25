@@ -44,13 +44,14 @@ import java.util.function.Consumer;
 @RestController
 @RequestMapping(path = "/ui")
 public class UIOperationHandler {
+    private static final Logger logger = LoggerFactory.getLogger(UIOperationHandler.class);
 
     private final Map<String, Process> noVncProcesses = new ConcurrentHashMap<>();
 
     @org.springframework.beans.factory.annotation.Value("${port.bind.range}")
     private String portRange;
 
-    @org.springframework.beans.factory.annotation.Value("${cybershuttle.api.url}")
+    @org.springframework.beans.factory.annotation.Value("${cybershuttle.internal.api.url}")
     private String cybershuttleApiUrl;
 
     @org.springframework.beans.factory.annotation.Value("${vnc.bin.home}")
@@ -61,8 +62,6 @@ public class UIOperationHandler {
 
     @org.springframework.beans.factory.annotation.Value("${vnc.bind.host}")
     private String vncBindHost;
-
-    private static final Logger logger = LoggerFactory.getLogger(UIOperationHandler.class);
 
     @PostMapping(path = "/launch", consumes = "application/json", produces = "application/json")
     public UILaunchResponse launchUIApp(@RequestBody UILaunchRequest launchRequest) throws Exception {

@@ -17,8 +17,14 @@
 
 package org.apache.airavata.cybershuttle.api;
 
+import org.apache.airavata.cybershuttle.api.util.HeartBeatManager;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Config {
+    @Bean
+    public HeartBeatManager heartBeatManager() {
+        return new HeartBeatManager();
+    }
 }
