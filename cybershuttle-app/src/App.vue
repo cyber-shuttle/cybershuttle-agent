@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Fira_Sans:200,300,400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:200,300,400,500,600,700,800');
 
 * {
   box-sizing: border-box;
