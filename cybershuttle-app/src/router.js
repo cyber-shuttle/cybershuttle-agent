@@ -4,6 +4,9 @@ import Home from './components/Home.vue';
 import Login from './components/Login.vue';
 import Signup from './components/Signup.vue';
 
+const service = require('./protos/authorization_grpc_web_pb')
+const auth = require('./protos/authorization_pb')
+// const grpc = require('@grpc/grpc-js')
 
 
 const routes = [

@@ -1,31 +1,49 @@
-const service = require('../protos/authorization_grpc_pb')
-const auth = require('../protos/authorization_pb')
-const grpc = require('grpc')
+const {UserServiceClient} = require('../protos/authorization_grpc_web_pb')
+const {CreateUserRequest, CreateUserResponse, Register, HelloRequest} = require('../protos/authorization_pb')
+// const grpc = require('grpc')
 
 
-export const register = async ({username, first_name, second_name, email, password } = {}) => {
+export const register = async ({data} = {}) => {
 
-	const user = {username,  first_name, second_name, email, password };
+	// const user = {username,  first_name, last_name, email, password };
 
-    console.log(user);
+    // console.log(user);
 
     // var client = new user_proto.UserService('localhost:50051',grpc.credentials.createInsecure());
 
-    let client = new service.UserServiceClient('localhost:50051', grpc.credentials.createInsecure())
+    let client = new UserServiceClient('http://localhost:5001',null, null)
 
-    let regis = new auth.Register()
+    let hie = new HelloRequest();
 
-    regis.setUsername(username);
-    regis.setFirstName(first_name);
-    regis.setLastName(last_name);
-    regis.setEmail(email);
-    regis.setPassword(password);
+    hie.setName("Praneeth");
 
-    client.createUser({new_user: user}, function(err, response) {
+    client.sayHello(hie, null, function(err, response) {
+        console.log('working')
         if (err) throw new Error(`Cannot register at this time. ${err}`);
-        console.log('User Created:', response.message);
+        console.log('User Created:', response.id);
         client.close();
     });
+
+    // let user = new Register();
+
+    // let regis = new CreateUserRequest();
+
+    // // regis.createUser.setUsername
+
+    // user.setUsername(data.username);
+    // user.setFirstName(data.first_name);
+    // user.setLastName(data.last_name);
+    // user.setEmail(data.email);
+    // user.setPassword(data.password);
+
+    // regis.setNewUser(user);
+
+    // client.createUser(regis, null, function(err, response) {
+    //     console.log('working')
+    //     if (err) throw new Error(`Cannot register at this time. ${err}`);
+    //     console.log('User Created:', response.id);
+    //     client.close();
+    // });
 
 };
 
