@@ -13,12 +13,18 @@
   },
   "main": "background.js",
   "dependencies": {
+    "@grpc/grpc-js": "^1.8.16",
     "bootstrap": "^5.3.0",
     "core-js": "^3.8.3",
+    "dns": "^0.2.2",
     "google-protobuf": "^3.21.2",
     "grpc": "^1.24.11",
     "grpc-tools": "^1.12.4",
+    "grpc-web": "^1.4.2",
+    "html-loader": "^4.2.0",
+    "http2": "^3.3.7",
     "node-polyfill-webpack-plugin": "^2.0.1",
+    "protoc-gen-grpc-web": "^1.4.2",
     "vue": "^3.2.13",
     "vue-router": "^4.2.2"
   },
@@ -47,11 +53,6 @@
       "parser": "@babel/eslint-parser"
     },
     "rules": {}
-  },
-  "browser": {
-    "fs": false,
-    "path": false,
-    "os": false
   },
   "browserslist": [
     "> 1%",

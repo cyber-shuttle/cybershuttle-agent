@@ -5,6 +5,14 @@
 
         <div class="form-group">
 
+<label>Username</label>
+
+<input type="text" class="form-control" v-model="username" placeholder="User Name" />
+
+</div>
+
+        <div class="form-group">
+
             <label>First Name</label>
 
             <input type="text" class="form-control" v-model="first_name" placeholder="First Name" />
@@ -59,6 +67,7 @@ export default {
 
     data() {
         return {
+            username: '',
             first_name: '',
             last_name: '',
             email: '',
@@ -71,6 +80,7 @@ export default {
         async handleSubmit(e) {
             e.preventDefault();
             const data = {
+                username: this.username,
                 first_name: this.first_name,
                 last_name: this.last_name,
                 email: this.email,
@@ -80,7 +90,7 @@ export default {
             console.log(data);
 
             try {
-                const res = await register({ username, first_name, second_name, email, password });
+                const res = await register({ data });
                 if (res.error) console.log(res.error);
                 else {
                     console.log(res.message);
