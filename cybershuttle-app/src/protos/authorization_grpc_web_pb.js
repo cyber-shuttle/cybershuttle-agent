@@ -1,5 +1,5 @@
 /**
- * @fileoverview gRPC-Web generated client stub for 
+ * @fileoverview gRPC-Web generated client stub for org.cybershuttle.appserver
  * @enhanceable
  * @public
  */
@@ -19,7 +19,10 @@
 const grpc = {};
 grpc.web = require('grpc-web');
 
-const proto = require('./authorization_pb.js');
+const proto = {};
+proto.org = {};
+proto.org.cybershuttle = {};
+proto.org.cybershuttle.appserver = require('./authorization_pb.js');
 
 /**
  * @param {string} hostname
@@ -29,7 +32,7 @@ const proto = require('./authorization_pb.js');
  * @struct
  * @final
  */
-proto.UserServiceClient =
+proto.org.cybershuttle.appserver.UserServiceClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -55,7 +58,7 @@ proto.UserServiceClient =
  * @struct
  * @final
  */
-proto.UserServicePromiseClient =
+proto.org.cybershuttle.appserver.UserServicePromiseClient =
     function(hostname, credentials, options) {
   if (!options) options = {};
   options.format = 'text';
@@ -76,39 +79,39 @@ proto.UserServicePromiseClient =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.CreateUserRequest,
- *   !proto.CreateUserResponse>}
+ *   !proto.org.cybershuttle.appserver.CreateUserRequest,
+ *   !proto.org.cybershuttle.appserver.CreateUserResponse>}
  */
 const methodDescriptor_UserService_CreateUser = new grpc.web.MethodDescriptor(
-  '/UserService/CreateUser',
+  '/org.cybershuttle.appserver.UserService/CreateUser',
   grpc.web.MethodType.UNARY,
-  proto.CreateUserRequest,
-  proto.CreateUserResponse,
+  proto.org.cybershuttle.appserver.CreateUserRequest,
+  proto.org.cybershuttle.appserver.CreateUserResponse,
   /**
-   * @param {!proto.CreateUserRequest} request
+   * @param {!proto.org.cybershuttle.appserver.CreateUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.CreateUserResponse.deserializeBinary
+  proto.org.cybershuttle.appserver.CreateUserResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.CreateUserRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.CreateUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.CreateUserResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.org.cybershuttle.appserver.CreateUserResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.CreateUserResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.org.cybershuttle.appserver.CreateUserResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.UserServiceClient.prototype.createUser =
+proto.org.cybershuttle.appserver.UserServiceClient.prototype.createUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/UserService/CreateUser',
+      '/org.cybershuttle.appserver.UserService/CreateUser',
       request,
       metadata || {},
       methodDescriptor_UserService_CreateUser,
@@ -117,17 +120,17 @@ proto.UserServiceClient.prototype.createUser =
 
 
 /**
- * @param {!proto.CreateUserRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.CreateUserRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.CreateUserResponse>}
+ * @return {!Promise<!proto.org.cybershuttle.appserver.CreateUserResponse>}
  *     Promise that resolves to the response
  */
-proto.UserServicePromiseClient.prototype.createUser =
+proto.org.cybershuttle.appserver.UserServicePromiseClient.prototype.createUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/UserService/CreateUser',
+      '/org.cybershuttle.appserver.UserService/CreateUser',
       request,
       metadata || {},
       methodDescriptor_UserService_CreateUser);
@@ -137,39 +140,39 @@ proto.UserServicePromiseClient.prototype.createUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.GetUserRequest,
- *   !proto.GetUserResponse>}
+ *   !proto.org.cybershuttle.appserver.GetUserRequest,
+ *   !proto.org.cybershuttle.appserver.GetUserResponse>}
  */
 const methodDescriptor_UserService_GetUser = new grpc.web.MethodDescriptor(
-  '/UserService/GetUser',
+  '/org.cybershuttle.appserver.UserService/GetUser',
   grpc.web.MethodType.UNARY,
-  proto.GetUserRequest,
-  proto.GetUserResponse,
+  proto.org.cybershuttle.appserver.GetUserRequest,
+  proto.org.cybershuttle.appserver.GetUserResponse,
   /**
-   * @param {!proto.GetUserRequest} request
+   * @param {!proto.org.cybershuttle.appserver.GetUserRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.GetUserResponse.deserializeBinary
+  proto.org.cybershuttle.appserver.GetUserResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.GetUserRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.GetUserRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.GetUserResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.org.cybershuttle.appserver.GetUserResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.GetUserResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.org.cybershuttle.appserver.GetUserResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.UserServiceClient.prototype.getUser =
+proto.org.cybershuttle.appserver.UserServiceClient.prototype.getUser =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/UserService/GetUser',
+      '/org.cybershuttle.appserver.UserService/GetUser',
       request,
       metadata || {},
       methodDescriptor_UserService_GetUser,
@@ -178,17 +181,17 @@ proto.UserServiceClient.prototype.getUser =
 
 
 /**
- * @param {!proto.GetUserRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.GetUserRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.GetUserResponse>}
+ * @return {!Promise<!proto.org.cybershuttle.appserver.GetUserResponse>}
  *     Promise that resolves to the response
  */
-proto.UserServicePromiseClient.prototype.getUser =
+proto.org.cybershuttle.appserver.UserServicePromiseClient.prototype.getUser =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/UserService/GetUser',
+      '/org.cybershuttle.appserver.UserService/GetUser',
       request,
       metadata || {},
       methodDescriptor_UserService_GetUser);
@@ -198,39 +201,39 @@ proto.UserServicePromiseClient.prototype.getUser =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.CreateTokenRequest,
- *   !proto.CreateTokenResponse>}
+ *   !proto.org.cybershuttle.appserver.CreateTokenRequest,
+ *   !proto.org.cybershuttle.appserver.CreateTokenResponse>}
  */
 const methodDescriptor_UserService_CreateToken = new grpc.web.MethodDescriptor(
-  '/UserService/CreateToken',
+  '/org.cybershuttle.appserver.UserService/CreateToken',
   grpc.web.MethodType.UNARY,
-  proto.CreateTokenRequest,
-  proto.CreateTokenResponse,
+  proto.org.cybershuttle.appserver.CreateTokenRequest,
+  proto.org.cybershuttle.appserver.CreateTokenResponse,
   /**
-   * @param {!proto.CreateTokenRequest} request
+   * @param {!proto.org.cybershuttle.appserver.CreateTokenRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.CreateTokenResponse.deserializeBinary
+  proto.org.cybershuttle.appserver.CreateTokenResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.CreateTokenRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.CreateTokenRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.CreateTokenResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.org.cybershuttle.appserver.CreateTokenResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.CreateTokenResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.org.cybershuttle.appserver.CreateTokenResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.UserServiceClient.prototype.createToken =
+proto.org.cybershuttle.appserver.UserServiceClient.prototype.createToken =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/UserService/CreateToken',
+      '/org.cybershuttle.appserver.UserService/CreateToken',
       request,
       metadata || {},
       methodDescriptor_UserService_CreateToken,
@@ -239,17 +242,17 @@ proto.UserServiceClient.prototype.createToken =
 
 
 /**
- * @param {!proto.CreateTokenRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.CreateTokenRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.CreateTokenResponse>}
+ * @return {!Promise<!proto.org.cybershuttle.appserver.CreateTokenResponse>}
  *     Promise that resolves to the response
  */
-proto.UserServicePromiseClient.prototype.createToken =
+proto.org.cybershuttle.appserver.UserServicePromiseClient.prototype.createToken =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/UserService/CreateToken',
+      '/org.cybershuttle.appserver.UserService/CreateToken',
       request,
       metadata || {},
       methodDescriptor_UserService_CreateToken);
@@ -259,39 +262,39 @@ proto.UserServicePromiseClient.prototype.createToken =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
- *   !proto.IsAuthenticatedRequest,
- *   !proto.IsAuthenticatedResponse>}
+ *   !proto.org.cybershuttle.appserver.IsAuthenticatedRequest,
+ *   !proto.org.cybershuttle.appserver.IsAuthenticatedResponse>}
  */
 const methodDescriptor_UserService_IsAuthenticated = new grpc.web.MethodDescriptor(
-  '/UserService/IsAuthenticated',
+  '/org.cybershuttle.appserver.UserService/IsAuthenticated',
   grpc.web.MethodType.UNARY,
-  proto.IsAuthenticatedRequest,
-  proto.IsAuthenticatedResponse,
+  proto.org.cybershuttle.appserver.IsAuthenticatedRequest,
+  proto.org.cybershuttle.appserver.IsAuthenticatedResponse,
   /**
-   * @param {!proto.IsAuthenticatedRequest} request
+   * @param {!proto.org.cybershuttle.appserver.IsAuthenticatedRequest} request
    * @return {!Uint8Array}
    */
   function(request) {
     return request.serializeBinary();
   },
-  proto.IsAuthenticatedResponse.deserializeBinary
+  proto.org.cybershuttle.appserver.IsAuthenticatedResponse.deserializeBinary
 );
 
 
 /**
- * @param {!proto.IsAuthenticatedRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.IsAuthenticatedRequest} request The
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.IsAuthenticatedResponse)}
+ * @param {function(?grpc.web.RpcError, ?proto.org.cybershuttle.appserver.IsAuthenticatedResponse)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.IsAuthenticatedResponse>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.org.cybershuttle.appserver.IsAuthenticatedResponse>|undefined}
  *     The XHR Node Readable Stream
  */
-proto.UserServiceClient.prototype.isAuthenticated =
+proto.org.cybershuttle.appserver.UserServiceClient.prototype.isAuthenticated =
     function(request, metadata, callback) {
   return this.client_.rpcCall(this.hostname_ +
-      '/UserService/IsAuthenticated',
+      '/org.cybershuttle.appserver.UserService/IsAuthenticated',
       request,
       metadata || {},
       methodDescriptor_UserService_IsAuthenticated,
@@ -300,83 +303,22 @@ proto.UserServiceClient.prototype.isAuthenticated =
 
 
 /**
- * @param {!proto.IsAuthenticatedRequest} request The
+ * @param {!proto.org.cybershuttle.appserver.IsAuthenticatedRequest} request The
  *     request proto
  * @param {?Object<string, string>=} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.IsAuthenticatedResponse>}
+ * @return {!Promise<!proto.org.cybershuttle.appserver.IsAuthenticatedResponse>}
  *     Promise that resolves to the response
  */
-proto.UserServicePromiseClient.prototype.isAuthenticated =
+proto.org.cybershuttle.appserver.UserServicePromiseClient.prototype.isAuthenticated =
     function(request, metadata) {
   return this.client_.unaryCall(this.hostname_ +
-      '/UserService/IsAuthenticated',
+      '/org.cybershuttle.appserver.UserService/IsAuthenticated',
       request,
       metadata || {},
       methodDescriptor_UserService_IsAuthenticated);
 };
 
 
-/**
- * @const
- * @type {!grpc.web.MethodDescriptor<
- *   !proto.HelloRequest,
- *   !proto.HelloReply>}
- */
-const methodDescriptor_UserService_SayHello = new grpc.web.MethodDescriptor(
-  '/UserService/SayHello',
-  grpc.web.MethodType.UNARY,
-  proto.HelloRequest,
-  proto.HelloReply,
-  /**
-   * @param {!proto.HelloRequest} request
-   * @return {!Uint8Array}
-   */
-  function(request) {
-    return request.serializeBinary();
-  },
-  proto.HelloReply.deserializeBinary
-);
-
-
-/**
- * @param {!proto.HelloRequest} request The
- *     request proto
- * @param {?Object<string, string>} metadata User defined
- *     call metadata
- * @param {function(?grpc.web.RpcError, ?proto.HelloReply)}
- *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.HelloReply>|undefined}
- *     The XHR Node Readable Stream
- */
-proto.UserServiceClient.prototype.sayHello =
-    function(request, metadata, callback) {
-  return this.client_.rpcCall(this.hostname_ +
-      '/UserService/SayHello',
-      request,
-      metadata || {},
-      methodDescriptor_UserService_SayHello,
-      callback);
-};
-
-
-/**
- * @param {!proto.HelloRequest} request The
- *     request proto
- * @param {?Object<string, string>=} metadata User defined
- *     call metadata
- * @return {!Promise<!proto.HelloReply>}
- *     Promise that resolves to the response
- */
-proto.UserServicePromiseClient.prototype.sayHello =
-    function(request, metadata) {
-  return this.client_.unaryCall(this.hostname_ +
-      '/UserService/SayHello',
-      request,
-      metadata || {},
-      methodDescriptor_UserService_SayHello);
-};
-
-
-module.exports = proto;
+module.exports = proto.org.cybershuttle.appserver;
 

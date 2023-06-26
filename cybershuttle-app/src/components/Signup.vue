@@ -1,15 +1,15 @@
 <template>
-    <form @submit="handleSubmit">
+    <form @submit="handleSignup">
 
         <h3>Signup</h3>
 
         <div class="form-group">
 
-<label>Username</label>
+            <label>Username</label>
 
-<input type="text" class="form-control" v-model="username" placeholder="User Name" />
+            <input type="text" class="form-control" v-model="username" placeholder="User Name" />
 
-</div>
+        </div>
 
         <div class="form-group">
 
@@ -57,8 +57,8 @@
 </template>
 
 <script>
-import { runInThisContext } from 'vm';
-import { register } from "../api/auth";
+import { inject } from 'vue';
+
 
 
 export default {
@@ -76,8 +76,14 @@ export default {
         }
     },
 
+    setup() {
+        const UserService = inject("UserServiceKey");
+        return { UserService }
+    },
+
     methods: {
-        async handleSubmit(e) {
+
+        async handleSignup(e) {
             e.preventDefault();
             const data = {
                 username: this.username,
@@ -87,14 +93,12 @@ export default {
                 password: this.password,
                 confirm_password: this.confirm_password
             }
-            console.log(data);
-
             try {
-                const res = await register({ data });
-                if (res.error) console.log(res.error);
-                else {
-                    console.log(res.message);
+                const res = await this.UserService.register({ data });
+                if (res.id) {
+                    this.$router.push('/login');
                 }
+
             } catch (err) {
                 console.log(err);
             }

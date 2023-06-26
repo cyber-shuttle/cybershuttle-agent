@@ -1,5 +1,5 @@
 <template>
-    <form>
+    <form @submit="handleLogin">
 
         <h3>Login</h3>
 
@@ -7,7 +7,7 @@
 
             <label>Email</label>
 
-            <input type="email" class="form-control" placeholder="Email" />
+            <input type="email" class="form-control" v-model="email" placeholder="Email" />
 
         </div>
 
@@ -15,7 +15,7 @@
 
             <label>Password</label>
 
-            <input type="password" class="form-control" placeholder="Password" />
+            <input type="password" class="form-control" v-model="password" placeholder="Password" />
 
         </div>
 
@@ -26,9 +26,49 @@
 
 <script>
 
+import { inject } from 'vue';
+import { useUsersStore } from "../stores/users";
+
 export default {
 
-    name: "Login"
+    name: "Login",
+
+    data() {
+        return {
+            email: '',
+            password: ''
+        }
+    },
+
+    setup() {
+        const UserService = inject("UserServiceKey");
+        return { UserService }
+    },
+
+    methods: {
+        async handleLogin(e) {
+            e.preventDefault();
+            const data = {
+                email: this.email,
+                password: this.password
+            }
+            
+            try {
+                const res = await this.UserService.login({ data });
+                if (res.Ok) {
+                    const userStore = useUsersStore();
+                    userStore.setUsername(res.username);
+                    userStore.setFirstname(res.first_name);
+                    userStore.setLastname(res.last_name);
+                    this.$router.push('/myapps'); 
+                }
+
+            } catch (err) {
+                console.log(err);
+            }
+
+        }
+    }
 
 }
 
