@@ -65,6 +65,7 @@ export class UserServiceGrpc {
                         "first_name": user.getFirstName(),
                         "last_name": user.getLastName(),
                         "email": user.getEmail(),
+                        "token": token,
                         "id": user.getId()
                     }
 

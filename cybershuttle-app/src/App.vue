@@ -1,13 +1,13 @@
 <template>
   <div id="app">
    
-    <AppNav />
+    <AppNav/>
 
     <div class="primary-wrapper">
 
         <div class="primary-inner">
 
-          <router-view/>
+          <router-view />
 
         </div>
       

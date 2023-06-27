@@ -52,7 +52,7 @@ export default {
                 email: this.email,
                 password: this.password
             }
-            
+
             try {
                 const res = await this.UserService.login({ data });
                 if (res.Ok) {
@@ -60,7 +60,9 @@ export default {
                     userStore.setUsername(res.username);
                     userStore.setFirstname(res.first_name);
                     userStore.setLastname(res.last_name);
-                    this.$router.push('/myapps'); 
+                    userStore.setToken(res.token);
+                    userStore.setIsLoggedIn(true);
+                    this.$router.push('/myapps');
                 }
 
             } catch (err) {
