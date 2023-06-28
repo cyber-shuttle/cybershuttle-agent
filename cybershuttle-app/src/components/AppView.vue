@@ -1,27 +1,78 @@
 <template>
-    <form @submit="handleSubmit">
+    <div class="primary-wrapper">
 
-        <h3>App View</h3>
+        <v-container class="bg-surface-variant">
+            <v-row no-gutters>
+                <template v-for="userApp in userApps">
+                    <v-col @click="(e) => handleGetItems(userApp, e)">
+                        <!-- <v-col> -->
+                        <div class="mt-2 d-flex align-center flex-column">
 
-        <button class="btn btn-primary btn-block">Appview</button>
+                            <v-card width="400">
+                                <v-card-item>
+                                    <v-card-title>This is {{ userApp.name }}</v-card-title>
 
-    </form>
+                                    <v-card-subtitle>It takes {{ userApp.icon }} as background</v-card-subtitle>
+                                </v-card-item>
+
+                                <v-card-text>
+                                    App id is {{ userApp.appId }} and it has {{ userApp.noOfItems }} items.
+                                </v-card-text>
+                            </v-card>
+                        </div>
+                    </v-col>
+                    <v-responsive v-if="userApp.appId === 1" width="100%"></v-responsive>
+                </template>
+
+            </v-row>
+        </v-container>
+
+
+
+    </div>
 </template>
 
 <script>
+
+import { inject } from 'vue';
+import { useUsersStore } from "../stores/users";
 
 export default {
 
     name: "AppView",
 
-    methods: {
-        async handleSubmit(e) {
-            e.preventDefault();
-            console.log("hi");
+    data() {
+        return {
+            userApps: null
+        }
+    },
 
+    setup() {
+        const CyberShuttleService = inject("CyberShuttleServiceKey");
+        return { CyberShuttleService }
+    },
+
+    async mounted() {
+        const userStore = useUsersStore();
+        const data = {
+            userId: userStore.getUserid
+        }
+        try {
+            const res = await this.CyberShuttleService.getApps(data);
+            this.userApps = res.userApps;
+        } catch (err) {
+            console.log(err);
+        }
+    },
+
+    methods: {
+        async handleGetItems(userApp, e) {
+            e.preventDefault();
+            const userStore = useUsersStore();
+            userStore.setAppid(userApp.appId);
+            this.$router.push("/myitems");
         }
     }
-
 }
 
 </script>

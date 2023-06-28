@@ -1,17 +1,21 @@
 <template>
+    <div class="primary-wrapper">
 
-        <h3> Welcome to Cybershuttle </h3>
-        
+        <div class="primary-inner">
+            
+            <h3> Welcome to Cybershuttle </h3>
+
+        </div>
+
+    </div>
 </template>
 
 <script>
 
-    export default {
-        name: "Home"
-    }
+export default {
+    name: "Home"
+}
 
 </script>
 
-<style>
-
-</style>
+<style></style>
