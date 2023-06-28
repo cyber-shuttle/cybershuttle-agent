@@ -14,13 +14,6 @@ export default {
 
     name: "AppView",
 
-    data() {
-        return {
-            email: '',
-            password: ''
-        }
-    },
-
     methods: {
         async handleSubmit(e) {
             e.preventDefault();
