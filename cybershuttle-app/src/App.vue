@@ -3,15 +3,8 @@
    
     <AppNav/>
 
-    <div class="primary-wrapper">
-
-        <div class="primary-inner">
-
           <router-view />
 
-        </div>
-      
-    </div>
     
   </div>
 </template>
@@ -39,7 +32,7 @@ export default {
  body {
     background: rgb(193, 191, 191) !important;
     min-height: 100vh;
-    display: flex;
+    /* display: flex; */
     font-weight: 400;
     font-family: sans-serif;
   }

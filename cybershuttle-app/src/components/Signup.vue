@@ -1,4 +1,7 @@
 <template>
+        <div class="primary-wrapper">
+
+<div class="primary-inner">
     <form @submit="handleSignup">
 
         <h3>Signup</h3>
@@ -54,6 +57,9 @@
         <button class="btn btn-primary btn-block">Signup</button>
 
     </form>
+</div>
+      
+    </div>
 </template>
 
 <script>

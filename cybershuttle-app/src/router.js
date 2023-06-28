@@ -4,6 +4,7 @@ import Home from './components/Home.vue';
 import Login from './components/Login.vue';
 import Signup from './components/Signup.vue';
 import AppView from './components/AppView.vue';
+import ItemView from './components/ItemView.vue';
 
 const service = require('./protos/authorization_grpc_web_pb')
 const auth = require('./protos/authorization_pb')
@@ -30,6 +31,11 @@ const routes = [
         path: '/myapps',
         name: 'AppView',
         component: AppView
+    },
+    {
+        path: '/myitems',
+        name: 'ItemView',
+        component: ItemView
     },
 
 ]

@@ -1,6 +1,6 @@
 # cybershuttle-app
 
-## Prject Prerequisites
+## Project Prerequisites
 
 make sure you have npm installed, preferbly a version <17 and >15. Used npm 16 for this project.
 

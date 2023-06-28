@@ -1,4 +1,7 @@
 <template>
+    <div class="primary-wrapper">
+
+        <div class="primary-inner">
     <form @submit="handleLogin">
 
         <h3>Login</h3>
@@ -22,6 +25,9 @@
         <button class="btn btn-primary btn-block">Login</button>
 
     </form>
+    </div>
+      
+    </div>
 </template>
 
 <script>
@@ -58,6 +64,7 @@ export default {
                 if (res.Ok) {
                     const userStore = useUsersStore();
                     userStore.setUsername(res.username);
+                    userStore.setUserid(res.id);
                     userStore.setFirstname(res.first_name);
                     userStore.setLastname(res.last_name);
                     userStore.setToken(res.token);
