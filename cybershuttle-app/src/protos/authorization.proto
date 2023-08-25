@@ -9,58 +9,68 @@ message Register {
     string email = 4;
     string password = 5;
     int32 id = 6;
-}
-
-message User {
-        string username = 1;
-        string first_name = 2;
-        string last_name = 3;
-        string email = 4;
-        int32 id = 5;
-}
-
-message Login {
+  }
+  
+  message User {
+    string username = 1;
+    string first_name = 2;
+    string last_name = 3;
+    string email = 4;
+    int32 id = 5;
+  }
+  
+  message Login {
     string email = 1;
     string password = 2;
-}
-
-message CreateUserRequest {
+  }
+  
+  message CreateUserRequest {
     Register new_user = 1;
-}
-
-message CreateUserResponse {
+  }
+  
+  message CreateUserResponse {
     int32 id = 1;
-}
-
-message GetUserRequest {
+  }
+  
+  message GetUserRequest {
     int32 id = 1;
-}
-
-message GetUserResponse {
+  }
+  
+  message GetUserResponse {
     User user = 1;
-}
-
-message CreateTokenRequest {
+  }
+  
+  message CreateTokenRequest {
     Login login = 1;
-}
-
-message CreateTokenResponse {
+  }
+  
+  message CreateTokenResponse {
     string token = 1;
-}
-
-message IsAuthenticatedRequest {
+    User user = 2;
+  }
+  
+  message IsAuthenticatedRequest {
     string token = 1;
-}
-
-message IsAuthenticatedResponse {
+    User user = 2;
+  }
+  
+  message ConsulAuthParams {
+    string consulToken = 1;
+    string consulPath = 2;
+    string consulHost = 3;
+    int32 consulPort = 4;
+  }
+  
+  message IsAuthenticatedResponse {
     User user = 1;
     bool ok = 2;
-}
-
-
-service UserService {
+    ConsulAuthParams consulAuthParams = 3;
+  }
+  
+  
+  service UserService {
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {};
     rpc GetUser(GetUserRequest) returns (GetUserResponse) {};
     rpc CreateToken(CreateTokenRequest) returns (CreateTokenResponse) {};
     rpc IsAuthenticated(IsAuthenticatedRequest) returns (IsAuthenticatedResponse) {};
-}
+  }
