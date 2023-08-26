@@ -100,7 +100,7 @@ export default {
                 confirm_password: this.confirm_password
             }
             try {
-                const res = await this.UserService.register({ data });
+                const res = await this.UserService.register( data );
                 if (res.id) {
                     this.$router.push('/login');
                 }

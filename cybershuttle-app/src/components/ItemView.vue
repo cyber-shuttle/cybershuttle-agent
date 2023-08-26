@@ -49,7 +49,8 @@ export default {
 
     data() {
         return {
-            userItems: null
+            userItems: null,
+            sessionPath: null
         }
     },
 
@@ -61,6 +62,7 @@ export default {
     async mounted() {
         const userStore = useUsersStore();
         const appId = userStore.getAppid;
+        this.sessionPath = userStore.getConsulPath;
         const data = {
             appId: appId
         }
@@ -77,7 +79,8 @@ export default {
             e.preventDefault();
             var res;
             const data = {
-                itemId: userItem.itemId
+                itemId: userItem.itemId,
+                sessionPath: this.sessionPath
             }
             if (!userItem.isItemLaunched) {
                 res = await this.CyberShuttleService.launchItem(data)
