@@ -1383,7 +1383,7 @@ proto.org.cybershuttle.appserver.ItemRequest.prototype.toObject = function(opt_i
 proto.org.cybershuttle.appserver.ItemRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     itemid: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    consulparams: (f = msg.getConsulparams()) && proto.org.cybershuttle.appserver.ConsulParams.toObject(includeInstance, f)
+    sessionpath: jspb.Message.getFieldWithDefault(msg, 2, "")
   };
 
   if (includeInstance) {
@@ -1425,9 +1425,8 @@ proto.org.cybershuttle.appserver.ItemRequest.deserializeBinaryFromReader = funct
       msg.setItemid(value);
       break;
     case 2:
-      var value = new proto.org.cybershuttle.appserver.ConsulParams;
-      reader.readMessage(value,proto.org.cybershuttle.appserver.ConsulParams.deserializeBinaryFromReader);
-      msg.setConsulparams(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSessionpath(value);
       break;
     default:
       reader.skipField();
@@ -1465,12 +1464,11 @@ proto.org.cybershuttle.appserver.ItemRequest.serializeBinaryToWriter = function(
       f
     );
   }
-  f = message.getConsulparams();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getSessionpath();
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      proto.org.cybershuttle.appserver.ConsulParams.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -1495,39 +1493,20 @@ proto.org.cybershuttle.appserver.ItemRequest.prototype.setItemid = function(valu
 
 
 /**
- * optional ConsulParams consulParams = 2;
- * @return {?proto.org.cybershuttle.appserver.ConsulParams}
+ * optional string sessionPath = 2;
+ * @return {string}
  */
-proto.org.cybershuttle.appserver.ItemRequest.prototype.getConsulparams = function() {
-  return /** @type{?proto.org.cybershuttle.appserver.ConsulParams} */ (
-    jspb.Message.getWrapperField(this, proto.org.cybershuttle.appserver.ConsulParams, 2));
+proto.org.cybershuttle.appserver.ItemRequest.prototype.getSessionpath = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.org.cybershuttle.appserver.ConsulParams|undefined} value
- * @return {!proto.org.cybershuttle.appserver.ItemRequest} returns this
-*/
-proto.org.cybershuttle.appserver.ItemRequest.prototype.setConsulparams = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {string} value
  * @return {!proto.org.cybershuttle.appserver.ItemRequest} returns this
  */
-proto.org.cybershuttle.appserver.ItemRequest.prototype.clearConsulparams = function() {
-  return this.setConsulparams(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.org.cybershuttle.appserver.ItemRequest.prototype.hasConsulparams = function() {
-  return jspb.Message.getField(this, 2) != null;
+proto.org.cybershuttle.appserver.ItemRequest.prototype.setSessionpath = function(value) {
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
