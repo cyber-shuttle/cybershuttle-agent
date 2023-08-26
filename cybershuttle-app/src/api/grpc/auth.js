@@ -14,6 +14,8 @@ export class UserServiceGrpc {
 
         let regis = new CreateUserRequest();
 
+        console.log(data["username"]);
+
         user.setUsername(data.username);
         user.setFirstName(data.first_name);
         user.setLastName(data.last_name);
@@ -49,16 +51,20 @@ export class UserServiceGrpc {
             const res = await client.createToken(tokenRequest, null);
 
             const token = res.getToken();
+            let newuser = res.getUser();
 
             if (token.length > 0) {
 
                 const auth = new IsAuthenticatedRequest();
                 auth.setToken(token);
+                auth.setUser(newuser);
 
                 const userResponse = await client.isAuthenticated(auth, null);
 
                 if (userResponse.getOk()) {
+                    console.log("looged in")
                     let user = userResponse.getUser();
+                    let consulParams = userResponse.getConsulauthparams();
                     let data = {
                         "Ok": userResponse.getOk(),
                         "username": user.getUsername(),
@@ -66,7 +72,11 @@ export class UserServiceGrpc {
                         "last_name": user.getLastName(),
                         "email": user.getEmail(),
                         "token": token,
-                        "id": user.getId()
+                        "id": user.getId(),
+                        "consul_token": consulParams.getConsultoken(),
+                        "consul_path": consulParams.getConsulpath(),
+                        "consul_host": consulParams.getConsulhost(),
+                        "consul_port": consulParams.getConsulport(),
                     }
 
                     return data;
@@ -76,7 +86,7 @@ export class UserServiceGrpc {
                 }
 
             } else {
-                throw new Error(`Cannot get login with given details`);
+                throw new Error(`Cannot login with given details`);
             }
 
         } catch (err) {

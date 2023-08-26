@@ -69,14 +69,15 @@ export class CyberShuttleServiceGrpc {
 
         let client = new CyberShuttleServicePromiseClient(host, null, null);
 
-        let itemId = new ItemRequest();
+        let itemRequest = new ItemRequest();
 
-        itemId.setItemid(data.itemId);
+        itemRequest.setItemid(data.itemId);
+        itemRequest.setSessionpath(data.sessionPath);
 
         try {
-            const res = await client.launchItem(itemId, null);
+            const res = await client.launchItem(itemRequest, null);
 
-            return { "isItemLaunched": res.getIsitemlaunched(), "itemStatus": res.getItemstatus(), "itemId": itemId };
+            return { "isItemLaunched": res.getIsitemlaunched(), "itemStatus": res.getItemstatus(), "itemId": data.itemId };
 
         } catch (err) {
             throw new Error(`Cannot launch the item now. ${err}`);
@@ -87,14 +88,15 @@ export class CyberShuttleServiceGrpc {
 
         let client = new CyberShuttleServicePromiseClient(host, null, null);
 
-        let itemId = new ItemRequest();
+        let itemRequest = new ItemRequest();
 
-        itemId.setItemid(data.itemId);
+        itemRequest.setItemid(data.itemId);
+        itemRequest.setSessionpath(data.sessionPath);
 
         try {
-            const res = await client.stopItem(itemId, null);
+            const res = await client.stopItem(itemRequest, null);
 
-            return { "isItemLaunched": res.getIsitemlaunched(), "itemStatus": res.getItemstatus(), "itemId": itemId };
+            return { "isItemLaunched": res.getIsitemlaunched(), "itemStatus": res.getItemstatus(), "itemId": data.itemId };
 
         } catch (err) {
             throw new Error(`Cannot launch the item now. ${err}`);

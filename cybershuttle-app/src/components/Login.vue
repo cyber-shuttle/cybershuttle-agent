@@ -60,7 +60,7 @@ export default {
             }
 
             try {
-                const res = await this.UserService.login({ data });
+                const res = await this.UserService.login( data );
                 if (res.Ok) {
                     const userStore = useUsersStore();
                     userStore.setUsername(res.username);
@@ -69,6 +69,11 @@ export default {
                     userStore.setLastname(res.last_name);
                     userStore.setToken(res.token);
                     userStore.setIsLoggedIn(true);
+                    userStore.setConsulToken(res.consul_token);
+                    userStore.setConsulPath(res.consul_path);
+                    userStore.setConsulHost(res.consul_host);
+                    userStore.setConsulPort(res.consul_port);
+                    console.log("token ",res.consul_token,"path ",res.consul_path,"host ",res.consul_host,"port ",res.consul_port);
                     this.$router.push('/myapps');
                 }
 
